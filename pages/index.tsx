@@ -1,9 +1,59 @@
 import styles from '../styles/Home.module.css'
+import { Configuration, Session, V0alpha2Api } from '@ory/kratos-client'
+import { AxiosError } from 'axios'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+import { useEffect, useState } from 'react'
+
+// Initialize the Ory Kratos SDK which will connect to the
+// /api/.ory/ route we created in the previous step.
+const kratos = new V0alpha2Api(
+  new Configuration({
+    // We use Ory Kratos' Public API
+    basePath: '/api/.ory/api/kratos/public'
+  })
+)
 
 const Home: NextPage = () => {
+  // Contains the current session or undefined.
+  const [session, setSession] = useState<Session>()
+
+  // The URL we can use to log out.
+  const [logoutUrl, setLogoutUrl] = useState<string>()
+
+  // The error message or undefined.
+  const [error, setError] = useState<any>()
+
+  useEffect(() => {
+    // If the session or error have been loaded, do nothing.
+    if (session || error) {
+      return
+    }
+
+    // Try to load the session.
+    kratos
+      .toSession()
+      .then(({ data: session }) => {
+        // Session loaded successfully! Let's set it.
+        setSession(session)
+
+        // Since we have a session, we can also get the logout URL.
+        return kratos
+          .createSelfServiceLogoutFlowUrlForBrowsers()
+          .then(({ data }) => {
+            setLogoutUrl(data.logout_url)
+          })
+      })
+      .catch((err: AxiosError) => {
+        // An error occurred while loading the session or fetching
+        // the logout URL. Let's show that!
+        setError({
+          error: err.toString(),
+          data: err.response?.data
+        })
+      })
+  }, [session, error])
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,57 +64,68 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          {session ? (
+            <>
+              You are signed in using <a href="https://www.ory.sh/">Ory</a>!
+            </>
+          ) : (
+            <>
+              Please <a href={'/api/.ory/ui/login'}>sign in</a> or{' '}
+              <a href={'/api/.ory/ui/login'}>sign up</a>!
+            </>
+          )}
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
+          {session ? (
+            <>
+              <a href={'/api/.ory/ui/settings'}>Update your settings</a> or{' '}
+              <a href={logoutUrl} aria-disabled={!logoutUrl}>
+                sign out
+              </a>
+            </>
+          ) : (
+            <>
+              To view this page, please{' '}
+              <a href={'/api/.ory/ui/login'}>sign in</a> or{' '}
+              <a href={'/api/.ory/ui/registration'}>create an account</a>!
+            </>
+          )}
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
+          <a href="https://www.ory.sh/docs/kratos" className={styles.card}>
             <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
+            <p>Find in-depth information about Ory Kratos features and API.</p>
           </a>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
+          <a href="https://www.ory.sh/docs" className={styles.card}>
             <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
+            <p>The easiest way to deploy Ory Kratos is on Ory Cloud!</p>
+          </a>
+
+          <a href="https://www.ory.sh/docs" className={styles.card}>
+            <h2>Understand &rarr;</h2>
+            <p>Read the accompanying blog post on the Ory Website!</p>
+          </a>
+
+          <a href="https://github.com/ory/kratos" className={styles.card}>
+            <h2>GitHub &rarr;</h2>
+            <p>Check out Ory Kratos on GitHub!</p>
           </a>
         </div>
-      </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+        {session ? (
+          <div className={styles.session}>
+            <>
+              <p>Find your session details below. </p>
+              <pre className={styles.pre + ' ' + styles.code}>
+                <code>{JSON.stringify(session, null, 2)}</code>
+              </pre>
+            </>
+          </div>
+        ) : null}
+      </main>
     </div>
   )
 }
