@@ -80,7 +80,11 @@ const Home: NextPage = () => {
           {session ? (
             <>
               <a href={'/api/.ory/ui/settings'}>Update your settings</a> or{' '}
-              <a href={logoutUrl} aria-disabled={!logoutUrl}>
+              <a
+                data-testid="logout"
+                href={logoutUrl}
+                aria-disabled={!logoutUrl}
+              >
                 sign out
               </a>
             </>
@@ -120,7 +124,9 @@ const Home: NextPage = () => {
             <>
               <p>Find your session details below. </p>
               <pre className={styles.pre + ' ' + styles.code}>
-                <code>{JSON.stringify(session, null, 2)}</code>
+                <code data-testid={'session'}>
+                  {JSON.stringify(session, null, 2)}
+                </code>
               </pre>
             </>
           </div>
