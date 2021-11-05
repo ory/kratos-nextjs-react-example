@@ -10,4 +10,4 @@ accompanying blog post:
 [Add Authentication to your React / NextJS Single Page Application (SPA)](https://www.ory.sh/login-spa-react-nextjs-authentication-example-api/)
 
 Check this app out live at
-[kratos-reference-ui-react-nextjs.vercel.app](https://kratos-reference-ui-react-nextjs.vercel.app).
+[kratos-nextjs-react-example.vercel.app](https://kratos-nextjs-react-example.vercel.app).
