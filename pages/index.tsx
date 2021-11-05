@@ -118,7 +118,9 @@ const Home: NextPage = () => {
 
           <a href="https://www.ory.sh/docs/kratos" className={styles.card}>
             <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Ory Kratos' features and API.</p>
+            <p>
+              Find in-depth information about Ory Kratos&apos; features and API.
+            </p>
           </a>
 
           <a
