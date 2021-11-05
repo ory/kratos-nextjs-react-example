@@ -86,7 +86,7 @@ const Home: NextPage = () => {
                 aria-disabled={!logoutUrl}
               >
                 sign out
-              </a>
+              </a>!
             </>
           ) : (
             <>
