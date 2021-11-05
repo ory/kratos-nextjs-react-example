@@ -70,8 +70,8 @@ const Home: NextPage = () => {
             </>
           ) : (
             <>
-              Please <a href={'/api/.ory/ui/login'}>sign in</a> or{' '}
-              <a href={'/api/.ory/ui/login'}>sign up</a>!
+              Add Auth to <a href={'https://nextjs.org'}>Next.js</a> with{' '}
+              <a href="https://www.ory.sh/">Ory</a>!
             </>
           )}
         </h1>
@@ -90,27 +90,43 @@ const Home: NextPage = () => {
             </>
           ) : (
             <>
-              To view this page, please{' '}
-              <a href={'/api/.ory/ui/login'}>sign in</a> or{' '}
-              <a href={'/api/.ory/ui/registration'}>create an account</a>!
+              Get started and{' '}
+              <a href={'/api/.ory/ui/registration'}>
+                create an example account
+              </a>{' '}
+              or <a href={'/api/.ory/ui/login'}>sign in</a>.<br />
+              All using open source{' '}
+              <a href={'https://github.com/ory/kratos'}>Ory Kratos</a> in
+              minutes with just a{' '}
+              <a
+                href={
+                  'https://www.ory.sh/login-spa-react-nextjs-authentication-example-api/'
+                }
+              >
+                few lines of code
+              </a>
+              !
             </>
           )}
         </p>
 
         <div className={styles.grid}>
+          <a href="https://www.ory.sh/docs" className={styles.card}>
+            <h2>Learn &rarr;</h2>
+            <p>Learn how to add auth* to your Next.js app!</p>
+          </a>
+
           <a href="https://www.ory.sh/docs/kratos" className={styles.card}>
             <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Ory Kratos features and API.</p>
+            <p>Find in-depth information about Ory Kratos' features and API.</p>
           </a>
 
-          <a href="https://www.ory.sh/docs" className={styles.card}>
+          <a
+            href="https://www.ory.sh/docs/kratos/quickstart"
+            className={styles.card}
+          >
             <h2>Deploy &rarr;</h2>
-            <p>The easiest way to deploy Ory Kratos is on Ory Cloud!</p>
-          </a>
-
-          <a href="https://www.ory.sh/docs" className={styles.card}>
-            <h2>Understand &rarr;</h2>
-            <p>Read the accompanying blog post on the Ory Website!</p>
+            <p>Deploy open source Ory Kratos in seconds</p>
           </a>
 
           <a href="https://github.com/ory/kratos" className={styles.card}>
