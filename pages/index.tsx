@@ -9,8 +9,9 @@ import { useEffect, useState } from 'react'
 // /api/.ory/ route we created in the previous step.
 const kratos = new V0alpha2Api(
   new Configuration({
-    // We use Ory Kratos' Public API
-    basePath: '/api/.ory/api/kratos/public'
+    // This comes from the Next.js Edge Function location
+    // /api/.ory/ we set up. See file `./api/.ory/[...paths].js`
+    basePath: '/api/.ory/'
   })
 )
 
@@ -86,7 +87,7 @@ const Home: NextPage = () => {
                 aria-disabled={!logoutUrl}
               >
                 sign out
-              </a>!
+              </a>!!!!
             </>
           ) : (
             <>
