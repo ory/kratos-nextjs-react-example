@@ -1,11 +1,10 @@
 import styles from '../styles/Home.module.css'
+import { edgeConfig } from '@ory/integrations/next'
 import { Configuration, Session, V0alpha2Api } from '@ory/kratos-client'
 import { AxiosError } from 'axios'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-
-import { edgeConfig } from '../../integrations/next'
 
 // Initialize the Ory Kratos SDK which will connect to the
 // /api/.ory/ route we created in the previous step.
