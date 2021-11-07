@@ -12,7 +12,7 @@ const login = (email, password) => {
 
 const loggedIn = (email) => {
   cy.location('pathname').should('eq', '/')
-  cy.get('[data-testid="session"]').should('contain.text', email)
+  cy.get('[data-testid="session-content"]').should('contain.text', email)
   cy.get('[data-testid="logout"]').should('have.attr', 'aria-disabled', 'false')
 }
 
