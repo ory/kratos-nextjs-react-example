@@ -26,8 +26,10 @@ context('Basic UI interactions', () => {
 
   it('can load the start page', () => {
     cy.visit('/')
-    cy.get('a[href="/api/.ory/ui/login"]').should('exist')
-    cy.get('a[href="/api/.ory/ui/registration"]').should('exist')
+    cy.get('a[href="/api/.ory/self-service/login/browser"]').should('exist')
+    cy.get('a[href="/api/.ory/self-service/registration/browser"]').should(
+      'exist'
+    )
   })
 
   it('redirects to login when accessing settings without session', () => {
