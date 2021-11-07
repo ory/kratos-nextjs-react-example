@@ -75,7 +75,10 @@ const Home: NextPage = () => {
         <p className={styles.description}>
           {session ? (
             <>
-              <a href={'/api/.ory/ui/settings'}>Update your settings</a> or{' '}
+              <a href={'/api/.ory/self-service/settings/browser'}>
+                Update your settings
+              </a>{' '}
+              or{' '}
               <a
                 data-testid="logout"
                 href={logoutUrl}
@@ -88,10 +91,11 @@ const Home: NextPage = () => {
           ) : (
             <>
               Get started and{' '}
-              <a href={'/api/.ory/ui/registration'}>
+              <a href={'/api/.ory/self-service/registration/browser'}>
                 create an example account
               </a>{' '}
-              or <a href={'/api/.ory/ui/login'}>sign in</a>.<br />
+              or <a href={'/api/.ory/self-service/login/browser'}>sign in</a>.
+              <br />
               All using open source{' '}
               <a href={'https://github.com/ory/kratos'}>Ory Kratos</a> in
               minutes with just a{' '}
