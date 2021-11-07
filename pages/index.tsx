@@ -4,15 +4,12 @@ import { AxiosError } from 'axios'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
+import {edgeConfig} from "../../integrations/next";
 
 // Initialize the Ory Kratos SDK which will connect to the
 // /api/.ory/ route we created in the previous step.
 const kratos = new V0alpha2Api(
-  new Configuration({
-    // This comes from the Next.js Edge Function location
-    // /api/.ory/ we set up. See file `./api/.ory/[...paths].js`
-    basePath: '/api/.ory/'
-  })
+  new Configuration(edgeConfig)
 )
 
 const Home: NextPage = () => {
@@ -87,7 +84,7 @@ const Home: NextPage = () => {
                 aria-disabled={!logoutUrl}
               >
                 sign out
-              </a>!!!!
+              </a>!
             </>
           ) : (
             <>
@@ -143,7 +140,7 @@ const Home: NextPage = () => {
             <>
               <p>Find your session details below. </p>
               <pre className={styles.pre + ' ' + styles.code}>
-                <code data-testid={'session'}>
+                <code data-testid={'session-content'}>
                   {JSON.stringify(session, null, 2)}
                 </code>
               </pre>
