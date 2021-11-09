@@ -10,6 +10,32 @@ import { useEffect, useState } from 'react'
 // /api/.ory/ route we created in the previous step.
 const kratos = new V0alpha2Api(new Configuration(edgeConfig))
 
+const SignedOut = () => (
+  <>
+    Get started and{' '}
+    <a href={'/api/.ory/self-service/registration/browser'}>
+      create an example account
+    </a>{' '}
+    or <a href={'/api/.ory/self-service/login/browser'}>sign in</a>,{' '}
+    <a href={'/api/.ory/self-service/recovery/browser'}>recover your account</a>{' '}
+    or{' '}
+    <a href={'/api/.ory/self-service/verification/browser'}>
+      verify your email address
+    </a>
+    ! All using open source{' '}
+    <a href={'https://github.com/ory/kratos'}>Ory Kratos</a> in minutes with
+    just a{' '}
+    <a
+      href={
+        'https://www.ory.sh/login-spa-react-nextjs-authentication-example-api/'
+      }
+    >
+      few lines of code
+    </a>
+    !
+  </>
+)
+
 const Home: NextPage = () => {
   // Contains the current session or undefined.
   const [session, setSession] = useState<Session>()
@@ -89,25 +115,7 @@ const Home: NextPage = () => {
               !
             </>
           ) : (
-            <>
-              Get started and{' '}
-              <a href={'/api/.ory/self-service/registration/browser'}>
-                create an example account
-              </a>{' '}
-              or <a href={'/api/.ory/self-service/login/browser'}>sign in</a>.
-              <br />
-              All using open source{' '}
-              <a href={'https://github.com/ory/kratos'}>Ory Kratos</a> in
-              minutes with just a{' '}
-              <a
-                href={
-                  'https://www.ory.sh/login-spa-react-nextjs-authentication-example-api/'
-                }
-              >
-                few lines of code
-              </a>
-              !
-            </>
+            <SignedOut />
           )}
         </p>
 
