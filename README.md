@@ -7,7 +7,7 @@ code, using the [open source Ory Kratos project](https://github.com/ory/kratos)!
 
 For more details on how to do everything from scratch, please check out the
 accompanying blog post:
-[Add Authentication to your React / NextJS Single Page Application (SPA)](https://www.ory.sh/login-spa-react-nextjs-authentication-example-api/)
+[Add Authentication to your Next.js / React Single Page Application (SPA)](https://www.ory.sh/login-spa-react-nextjs-authentication-example-api-open-source/)
 
 Check this app out live at
 [kratos-nextjs-react-example.vercel.app](https://kratos-nextjs-react-example.vercel.app).
