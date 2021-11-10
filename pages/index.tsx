@@ -27,7 +27,7 @@ const SignedOut = () => (
     just a{' '}
     <a
       href={
-        'https://www.ory.sh/login-spa-react-nextjs-authentication-example-api/'
+        'https://www.ory.sh/login-spa-react-nextjs-authentication-example-api-open-source/'
       }
     >
       few lines of code
