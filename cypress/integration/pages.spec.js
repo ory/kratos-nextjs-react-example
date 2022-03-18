@@ -4,7 +4,7 @@ const randomEmail = () => randomString() + '@' + randomString() + '.com'
 
 const login = (email, password) => {
   cy.visit('/api/.ory/ui/login')
-  cy.get('[name="password_identifier"]').type(email)
+  cy.get('[name="identifier"]').type(email)
   cy.get('[name="password"]').type(password)
   cy.get('[name="method"]').click()
   loggedIn(email)
