@@ -27,7 +27,7 @@ const SignedOut = () => (
     just a{' '}
     <a
       href={
-        'https://www.ory.sh/login-spa-react-nextjs-authentication-example-api-open-source/'
+        'https://www.ory.com/login-spa-react-nextjs-authentication-example-api-open-source/'
       }
     >
       few lines of code
@@ -88,12 +88,12 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           {session ? (
             <>
-              You are signed in using <a href="https://www.ory.sh/">Ory</a>!
+              You are signed in using <a href="https://www.ory.com/">Ory</a>!
             </>
           ) : (
             <>
               Add Auth to <a href={'https://nextjs.org'}>Next.js</a> with{' '}
-              <a href="https://www.ory.sh/">Ory</a>!
+              <a href="https://www.ory.com/">Ory</a>!
             </>
           )}
         </h1>
@@ -120,12 +120,12 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          <a href="https://www.ory.sh/docs" className={styles.card}>
+          <a href="https://www.ory.com/docs" className={styles.card}>
             <h2>Learn &rarr;</h2>
             <p>Learn how to add auth* to your Next.js app!</p>
           </a>
 
-          <a href="https://www.ory.sh/docs/kratos" className={styles.card}>
+          <a href="https://www.ory.com/docs/kratos" className={styles.card}>
             <h2>Documentation &rarr;</h2>
             <p>
               Find in-depth information about Ory Kratos&apos; features and API.
@@ -133,7 +133,7 @@ const Home: NextPage = () => {
           </a>
 
           <a
-            href="https://www.ory.sh/docs/kratos/quickstart"
+            href="https://www.ory.com/docs/kratos/quickstart"
             className={styles.card}
           >
             <h2>Deploy &rarr;</h2>
